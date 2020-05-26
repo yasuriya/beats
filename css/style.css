@@ -1,0 +1,266 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-image: linear-gradient(
+      45deg,
+      transparent 20%,
+      black 25%,
+      transparent 25%
+    ),
+    linear-gradient(-45deg, transparent 20%, black 25%, transparent 25%),
+    linear-gradient(-45deg, transparent 75%, black 80%, transparent 0),
+    radial-gradient(gray 2px, transparent 0);
+  background-size: 30px 30px, 30px 30px;
+}
+
+i,
+svg {
+  pointer-events: none;
+}
+
+.kick-pad,
+.snare-pad,
+.hihat-pad {
+  width: 5rem;
+  height: 5rem;
+  cursor: pointer;
+  margin: 1rem 0.5rem;
+}
+
+.kick-pad {
+  background-color: #88ddae;
+
+  opacity: 0.7;
+}
+.kick-pad.active {
+  opacity: 1;
+}
+
+.snare-pad {
+  background-color: #40c97e;
+  opacity: 0.7;
+}
+.snare-pad.active {
+  opacity: 1;
+}
+
+.hihat-pad {
+  background-color: #13866a;
+  opacity: 0.8;
+}
+.hihat-pad.active {
+  opacity: 1;
+}
+
+.hihat-track,
+.kick-track,
+.snare-track {
+  display: flex;
+  align-items: center;
+  width: 85%;
+  margin-top: 3rem;
+  padding-bottom: 3rem;
+  justify-content: space-between;
+}
+
+.kick,
+.snare,
+.hihat {
+  display: flex;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 75%;
+  border-radius: 40px;
+  background-color: whitesmoke;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  height: 850px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  margin: 0rem 2rem;
+}
+
+.controls button {
+  border: none;
+
+  padding: 1rem;
+  background: rgba(99, 202, 99, 0.829);
+  color: aliceblue;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.active {
+  filter: drop-shadow(0.5px 0.5px 2px #fff);
+}
+.btnz {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+.btn span {
+  padding: 0 0.5rem;
+}
+.reset {
+  background: red;
+  opacity: 0.3;
+
+  transition: 0.4s;
+}
+.reset:hover {
+  background: red;
+  opacity: 1;
+}
+.play {
+  background: linear-gradient(90deg, #88ddae, #40c97e, #13866a, #88ddae);
+  transition: 1s;
+}
+
+.pad {
+  transition: all 0.5s ease;
+}
+.btn {
+  color: white;
+  cursor: pointer;
+  width: 200px;
+  font-size: 26px;
+  letter-spacing: 2px;
+  border: none;
+  font-weight: 700;
+  background-size: 300%;
+  font-family: "Fredoka One", cursive;
+  border-radius: 30px;
+  transition: all 2s ease-out;
+  box-sizing: border-box;
+  height: 60px;
+}
+
+select {
+  box-sizing: border-box;
+  width: 160px;
+  height: 40px;
+  padding-left: 0.8rem;
+  font-size: 1rem;
+  margin-left: 1rem;
+  border: none;
+  font-family: monospaces;
+  color: rgb(13, 58, 13) 7, 83, 17;
+  -webkit-appearance: none;
+  border-radius: 20px;
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    radial-gradient(#ddd 70%, transparent 72%);
+  background-position: calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px), calc(100% - 0.5em) 0.5em;
+  background-size: 5px 5px, 5px 5px, 1.5em 1.5em;
+  background-repeat: no-repeat;
+}
+
+.controls h1 {
+  width: 100px;
+  font-size: 2rem;
+  color: #484e4e;
+  text-shadow: 1px 1px 2px #fff;
+  font-family: "Fredoka One", cursive;
+  cursor: grab;
+}
+
+.mute.active {
+  background-color: red;
+  transform: rotate(360deg);
+}
+
+.tempo {
+  margin-top: 3rem;
+  width: 30%;
+  font-family: "Fredoka One", cursive;
+}
+
+.tempo-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.tempo-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #3c8d3f;
+  cursor: pointer;
+}
+
+.clicked {
+  background: #484e4e;
+}
+
+.tempo-slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #19d839;
+  cursor: pointer;
+}
+
+.tempo p {
+  font-size: 2rem;
+  color: #484e4e;
+  margin: 2rem;
+  text-align: center;
+  letter-spacing: 0.3rem;
+}
+
+@keyframes playTrack {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 300%;
+  }
+}
+
+@keyframes animate-reverse {
+  0% {
+    background-position: 40%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
